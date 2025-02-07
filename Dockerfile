@@ -1,8 +1,10 @@
 # Use Node.js LTS (Long Term Support) as the base image
 FROM node:20-alpine
 
-# Set working directory
+# Set working directory dont confuse with your folder name (you can name it anything other than app too)
 WORKDIR /app
+
+LABEL description="Todo App"
 
 # Install dependencies first (for better caching)
 COPY package.json package-lock.json ./
