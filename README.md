@@ -39,7 +39,7 @@ npm run dev
 
 4. Open browser and visit `http://localhost:5173`
 
-<!-- ### 🐳 Docker Setup
+### 🐳 Docker Setup
 
 #### Build the image
 ```bash
@@ -71,7 +71,7 @@ docker-compose down
 or
 ```bash
 docker compose down
-``` -->
+```
 
 ## 💻 Usage
 
