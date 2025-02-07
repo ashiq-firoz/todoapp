@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   todo-app:
-    image: todoapp:1.1
+    image: todoapp:latest
     container_name: todo-app
     ports:
       - "3000:8080"
