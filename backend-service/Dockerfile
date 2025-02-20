@@ -2,9 +2,9 @@
 FROM node:20-alpine
 
 # Set working directory dont confuse with your folder name (you can name it anything other than app too)
-WORKDIR /app
+WORKDIR /app/backend
 
-LABEL description="Todo App"
+LABEL description="Todo App Backend"
 
 # Install dependencies first (for better caching)
 COPY package.json package-lock.json ./
@@ -15,11 +15,11 @@ RUN npm install
 # Copy the rest of the application
 COPY . .
 
-# Build the application
-RUN npm run build
+# Expose port 3002
+EXPOSE 3002
 
-# Expose port 8080
-EXPOSE 8080
+# Run mongodb before executing this docker file 
+# RUN node init.db.js
 
 # Command to run the app
-CMD ["npm", "run","dev"]
+CMD ["npm", "start"]

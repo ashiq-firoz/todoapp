@@ -1,9 +1,39 @@
-version: '3.8'
+version: "3.8"
 
 services:
-  todo-app:
-    image: todoapp:latest
-    container_name: todo-app
-    ports:
-      - "3000:8080"
+  mongodb:
+    image: mongodb/mongodb-community-server:latest
+    container_name: mongodb-database-1
     restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    environment:
+      MONGO_INITDB_DATABASE: mydb
+
+  backend:
+    build: ./backend-service
+    container_name: backend-service
+    restart: always
+    depends_on:
+      - mongodb
+    ports:
+      - "3002:3002"
+    environment:
+      MONGO_URI: mongodb://mongodb:27017/todoapp
+      PORT: 3002
+
+  frontend:
+    build: ./frontend-service
+    container_name: frontend-service
+    restart: always
+    depends_on:
+      - backend
+    ports:
+      - "8080:8081"
+    environment:
+      REACT_APP_BACKEND_URL: "http://backend:3002"
+    
+volumes:
+  mongo_data:
