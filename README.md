@@ -37,8 +37,8 @@ This project uses Docker Compose to set up a **MongoDB**, **backend**, and **fro
 
 ### **1. Clone the Repository**
 ```sh
-git clone <your-repo-url>
-cd <your-repo-name>
+git clone https://github.com/ashiq-firoz/todoapp.git
+cd todoapp
 ```
 
 ### **2. Start Services**
